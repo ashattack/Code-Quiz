@@ -1,16 +1,17 @@
 // Select start button and store
-var startBtn = document.getElementById("start");
+var startBtn = $("#start");
 
-var questionsElement = document.getElementById("questions");
-
-// Call startQuiz function on button click;
-startBtn.onclick = startQuiz;
+var questionsElement = $("#questions")
+questionsElement.hide()
 
 // Function for kicking off quiz
 function startQuiz() {
-    var startScreen = document.querySelector("#start-screen");
-    startScreen.setAttribute("class", "hide");
+    console.log("start quiz");
+    var startScreen = $("#start-screen");
+    startScreen.hide()
 
     //Unhide the questions 
-    questionsElement.removeAttribute("class");
+    questionsElement.removeAttr("style")
 }
+
+startBtn.on('click', startQuiz)

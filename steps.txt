@@ -1,0 +1,4 @@
+1. answers for questions 
+2. html and bootstrap to display questions and take in answers
+3. bootstrap UI(user interface) elements - buttons, modals 
+4. 
