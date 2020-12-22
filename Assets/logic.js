@@ -56,10 +56,14 @@ function setTime() {
     }
     writeNextQuestion();
   }
-
+//moves onto the next question
   function writeNextQuestion() {
       var question = questions[onQuestion]
       writeQuestion(question)
       onQuestion++
+  }
+
+  function endQuiz() {
+      
   }
 
