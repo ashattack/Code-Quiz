@@ -2,6 +2,7 @@
 var startBtn = $("#start");
 var secondsLeft = 60
 var secondsText = $('#secondsLeft')
+var onQuestion = 0;
 
 var questionsElement = $("#questions")
 questionsElement.hide()
@@ -14,11 +15,13 @@ function startQuiz() {
 
     //Unhide the questions 
     questionsElement.removeAttr("style")
+    writeNextQuestion();
     setTime()
 }
 
 startBtn.on('click', startQuiz)
 
+//Setting the timer
 function setTime() {
     var timerInterval = setInterval(function() {
       secondsLeft--;
@@ -31,3 +34,32 @@ function setTime() {
   
     }, 1000);
   }
+ //Adding text to the buttons
+  function writeQuestion(questions) {
+    $("#card-title").html(questions.title);
+    $("#button1").html(questions.choices[0]);
+    $("#button2").html(questions.choices[1]);
+    $("#button3").html(questions.choices[2]);
+    $("#button4").html(questions.choices[3]);
+    $(".choice").on("click", onQuestionClick);
+  }
+
+    //What happens when someone clicks an answer
+  function onQuestionClick(e) {
+    console.log(e);
+    var target = $(this);
+    var answerClick = target.html();
+    console.log(answerClick);
+    var answer = questions[onQuestion].answer;
+    if (answer != answerClick){
+        secondsLeft =- 10;
+    }
+    writeNextQuestion();
+  }
+
+  function writeNextQuestion() {
+      var question = questions[onQuestion]
+      writeQuestion(question)
+      onQuestion++
+  }
+
