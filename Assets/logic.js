@@ -4,6 +4,10 @@ var secondsLeft = 60
 var secondsText = $('#secondsLeft')
 var onQuestion = 0;
 
+
+var endGame = $("#end-game")
+endGame.hide()
+
 var questionsElement = $("#questions")
 questionsElement.hide()
 
@@ -64,6 +68,6 @@ function setTime() {
   }
 
   function endQuiz() {
-      
+
   }
 
