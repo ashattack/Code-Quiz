@@ -60,7 +60,7 @@ function onQuestionClick(e) {
   console.log(answerClick);
   var answer = questions[onQuestion].answer;
   if (answer != answerClick) {
-    secondsLeft -= 5;
+    secondsLeft -= 10;
     $("#ans").html("WRONG!");
   } else {
     console.error("wtf")
