@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th sc></th>
+                <th scope="col">Scores</th>
             </tr>
         </thead>
         <tbody id="bodyofchrist">
@@ -29,18 +29,17 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
     <script>
-
         function addscore(namescore) {
+            if (namescore.name == "http" && namescore.score == "//localhost") {
+                return;
+            }
             $("#bodyofchrist").append(`<tr><th>${namescore.name}</th><th>${namescore.score}</th></tr>`)
         }
 
-        var skors = localStorage.getItem("high")
+        var skors = localStorage.getItem("btx111")
         console.log(skors)
         var nameScoreList = skors.split(",").map(x => ({ name: x.split(":")[0], score: x.split(":")[1] }))
         nameScoreList.sort((a, b) => a.score - b.score).map(addscore)
-
-
-
     </script>
 
 </body>

@@ -71,11 +71,11 @@ function onQuestionClick(e) {
 //moves onto the next question
 function writeNextQuestion() {
   onQuestion++
-  var question = questions[onQuestion]
-  writeQuestion(question)
   if (onQuestion >= questions.length) {
     endQuiz();
   }
+  var question = questions[onQuestion]
+  writeQuestion(question)
 }
 
 function endQuiz() {
@@ -90,13 +90,13 @@ function highScoresBtn(e) {
   // get their initials
   var value = $("#initials-here").val();
   // get any previous high scores
-  var highScores = localStorage.getItem("high");
+  var highScores = localStorage.getItem("btx111");
   if (highScores) {
     // save the high scores in localstorage
-    localStorage.setItem("high", highscores + "," + value + ":" + quizTime);
+    localStorage.setItem("btx111", highscores + "," + value + ":" + quizTime);
     return;
   }
-  localStorage.setItem("high", value + ":" + quizTime);
+  localStorage.setItem("btx111", value + ":" + quizTime);
 }
 
 $("#highscores").on("click", highScoresBtn);
