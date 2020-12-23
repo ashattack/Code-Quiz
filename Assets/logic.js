@@ -20,7 +20,7 @@ function startQuiz() {
 
   //Unhide the questions 
   questionsElement.removeAttr("style")
-  writeNextQuestion();
+  writeQuestion(questions[0]);
   $(".choice").on("click", onQuestionClick);
   setTime()
 }
@@ -61,14 +61,18 @@ function onQuestionClick(e) {
   var answer = questions[onQuestion].answer;
   if (answer != answerClick) {
     secondsLeft -= 5;
+    $("#ans").html("WRONG!");
+  } else {
+    console.error("wtf")
+    $("#ans").html("CORRECT!")
   }
   writeNextQuestion();
 }
 //moves onto the next question
 function writeNextQuestion() {
+  onQuestion++
   var question = questions[onQuestion]
   writeQuestion(question)
-  onQuestion++
   if (onQuestion >= questions.length) {
     endQuiz();
   }
@@ -83,12 +87,17 @@ function endQuiz() {
 
 // what happens when you click view highscores
 function highScoresBtn(e) {
+  // get their initials
   var value = $("#initials-here").val();
+  // get any previous high scores
   var highScores = localStorage.getItem("high");
-  localStorage.setItem("high", highscores + "," + value + ":" + quizTime);
-
-
-
+  if (highScores) {
+    // save the high scores in localstorage
+    localStorage.setItem("high", highscores + "," + value + ":" + quizTime);
+    return;
+  }
+  localStorage.setItem("high", value + ":" + quizTime);
 }
+
 $("#highscores").on("click", highScoresBtn);
 
